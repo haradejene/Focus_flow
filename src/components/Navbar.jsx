@@ -6,9 +6,7 @@ export default function Navbar() {
       <h1 className="font-bold text-xl">FocusFlow</h1>
       <div className="flex gap-4">
         <Link to="/">Dashboard</Link>
-        <Link to="/goals">Goals</Link>
-        <Link to="/journal">Journal</Link>
-        <Link to="/timer">Timer</Link>
+       <h1 className="text-blue-500">hello world</h1>
       </div>
     </nav>
   );
