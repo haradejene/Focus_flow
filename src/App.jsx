@@ -5,7 +5,6 @@ import Dashboard from "./pages/Dashboard";
 export default function App() {
   return (
     <Router>
-      <Navbar />
       <div className="p-4 max-w-4xl mx-auto">
 
         <Routes>
