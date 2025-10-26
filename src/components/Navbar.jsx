@@ -38,7 +38,7 @@ export default function Navbar() {
         <Link to="/learning-log" className="text-md font-light text-gray-700 hover:text-black">
           Learning Log
         </Link>
-        <Link to="/pomodoro" className="text-md font-light text-gray-700 hover:text-black">
+        <Link to="/timer" className="text-md font-light text-gray-700 hover:text-black">
           Pomodoro
         </Link>
       </div>
