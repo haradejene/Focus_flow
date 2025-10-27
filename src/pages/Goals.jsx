@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
+import GoalCard from "../components/GoalCard";
 
 export default function Goals() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showGoalForm, setShowGoalForm] = useState(false);
+
+  const handleAddGoalClick = () => {
+    setShowGoalForm(true);
+  };
+
+  const handleGoalAdded = () => {
+    setShowGoalForm(false);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -39,16 +55,29 @@ export default function Goals() {
           </h1>
 
           <div className="flex gap-6">
-            {/* Search Goal Button */}
-            <button
-              className="h-[46px] w-[217px] border border-black bg-white text-black rounded-[6px] font-medium transition duration-200 hover:bg-black hover:text-white"
-            >
-              Search goal
-            </button>
+            {/* Search Goal Input */}
+            <div className="relative">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                placeholder="Search goal"
+                className="h-[46px] w-[217px] border border-black bg-white text-black rounded-[6px] font-medium px-4 focus:outline-none focus:ring-1 focus:ring-[#8A46E2]"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-black"
+                >
+                  ×
+                </button>
+              )}
+            </div>
 
             {/* Add Goal Button */}
             <button
               className="h-[46px] w-[154px] border border-black bg-black text-white rounded-[6px] font-medium transition duration-200 hover:bg-white hover:text-black"
+              onClick={handleAddGoalClick}
             >
               Add goal
             </button>
@@ -56,8 +85,12 @@ export default function Goals() {
         </div>
 
         {/* Content Placeholder */}
-        <div className="flex-1 flex items-center justify-center text-gray-500 italic">
-          (Your goal list and components will appear here.)
+        <div className="flex-1">
+          <GoalCard 
+            searchTerm={searchTerm}
+            showGoalForm={showGoalForm}
+            onGoalAdded={handleGoalAdded}
+          />
         </div>
       </div>
     </div>
