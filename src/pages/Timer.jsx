@@ -76,7 +76,7 @@ export default function Timer() {
           <Link to="/" className="text-gray-700 hover:text-black font-medium">
             Home
           </Link>
-          <Link to="/goal-setter" className="text-gray-700 hover:text-black font-medium">
+          <Link to="/goals" className="text-gray-700 hover:text-black font-medium">
             Goal Setter
           </Link>
           <Link to="/learning-log" className="text-gray-700 hover:text-black font-medium">

@@ -32,7 +32,7 @@ export default function Navbar() {
 
       {/* Middle: Links */}
       <div className="flex space-x-10">
-        <Link to="/goalsetter" className="text-md font-light text-gray-700 hover:text-black">
+        <Link to="/goals" className="text-md font-light text-gray-700 hover:text-black">
           GoalSetter
         </Link>
         <Link to="/learning-log" className="text-md font-light text-gray-700 hover:text-black">
