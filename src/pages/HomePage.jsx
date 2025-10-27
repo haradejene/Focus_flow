@@ -87,7 +87,7 @@ export default function HomePage() {
           </h1>
           <div className="flex justify-end">
             <Link
-              to="/goalsetter"
+              to="/goals"
               className="bg-[#8A46E2] text-white px-6 py-2 rounded-md hover:bg-[#6d32c9] transition-all duration-300"
             >
               Start Here
@@ -115,7 +115,7 @@ export default function HomePage() {
           </h1>
           <div className="flex justify-end">
             <Link
-              to="/learning-log"
+              to="/learning"
               className="bg-[#8A46E2] text-white px-6 py-2 rounded-md hover:bg-[#6d32c9] transition-all duration-300"
             >
               Start Here
@@ -143,7 +143,7 @@ export default function HomePage() {
           </h1>
           <div className="flex justify-end">
             <Link
-              to="/pomodoro"
+              to="/timer"
               className="bg-[#8A46E2] text-white px-6 py-2 rounded-md hover:bg-[#6d32c9] transition-all duration-300"
             >
               Start Here

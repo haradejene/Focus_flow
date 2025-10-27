@@ -35,7 +35,7 @@ export default function Navbar() {
         <Link to="/goals" className="text-md font-light text-gray-700 hover:text-black">
           GoalSetter
         </Link>
-        <Link to="/learning-log" className="text-md font-light text-gray-700 hover:text-black">
+        <Link to="/learning" className="text-md font-light text-gray-700 hover:text-black">
           Learning Log
         </Link>
         <Link to="/timer" className="text-md font-light text-gray-700 hover:text-black">
