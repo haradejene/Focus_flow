@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage"; // Adjust path as needed
 
 export default function Navbar() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [currentUser, setCurrentUser] = useLocalStorage("currentUser", null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,9 +21,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  const handleLogout = () => {
+    setCurrentUser(null);
+    // Optional: Clear any other user-related data
+    // localStorage.removeItem('currentUser');
+    // localStorage.removeItem('users'); // Be careful with this - it would remove all users
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full px-10 py-6 flex flex-row items-center justify-between z-50  transition-transform duration-300 ${
+      className={`fixed top-0 left-0 right-0 w-full px-10 py-6 flex flex-row items-center justify-between z-50 transition-transform duration-300 ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -43,18 +52,36 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Right: Buttons */}
-      <div className="flex space-x-4">
-        <div className="w-[148px] h-[38px] bg-white border border-black rounded-[6px] flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
-          <Link to="/login" className="text-md font-medium">
-            Login
-          </Link>
-        </div>
-        <div className="w-[148px] h-[38px] bg-black border border-black text-white rounded-[6px] flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300">
-          <Link to="/signup" className="text-md font-medium">
-            Signup
-          </Link>
-        </div>
+      {/* Right: Buttons - Conditionally render based on auth state */}
+      <div className="flex space-x-4 items-center">
+        {currentUser ? (
+          // User is logged in - show welcome message and logout
+          <>
+            <span className="text-md font-light text-gray-700 mr-4">
+              Welcome, {currentUser.name}!
+            </span>
+            <div 
+              className="w-[148px] h-[38px] bg-black border border-black text-white rounded-[6px] flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
+              onClick={handleLogout}
+            >
+              <span className="text-md font-medium">Logout</span>
+            </div>
+          </>
+        ) : (
+          // User is not logged in - show login/signup buttons
+          <>
+            <div className="w-[148px] h-[38px] bg-white border border-black rounded-[6px] flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
+              <Link to="/loginpage" className="text-md font-medium">
+                Login
+              </Link>
+            </div>
+            <div className="w-[148px] h-[38px] bg-black border border-black text-white rounded-[6px] flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300">
+              <Link to="/signuppage" className="text-md font-medium">
+                Signup
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );
