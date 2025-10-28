@@ -73,7 +73,7 @@ export default function Goals() {
             Pomodoro
           </Link>
           <Link
-            to="/learning-log"
+            to="/learning"
             className="text-gray-700 hover:text-black font-medium py-2"
             onClick={() => setIsSidebarOpen(false)}
           >
